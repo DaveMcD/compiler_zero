@@ -2,31 +2,45 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>My Compiler</title>
+    <title>My Compiler Plumbing</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/compiler.css" />
+    <script type="text/javascript"
+            src="bower_components/requirejs/require.js"
+            data-main="scripts/main">
+    </script>
 </head>
-<body onload="init();">
-    <h1>[DaveMcD] Compiler Project Zero</h1>
-    <p>
-        . . . <em>a simple parser for a simple grammar</em>:
-        Derived entirely from the sample code at         http://www.labouseur.com/courses/compilers/compilers/alan/
-    </p>
-    <pre>
+<!--  skip the onload - html was not able to see it in a module loaded via requireJS
+    <body onload="init();">
+-->
+<body>
+
+<h1>[DaveMcD] Compiler Project Zero</h1>
+<p>
+    . . . <em>a simple parser for a simple grammar</em>:<br>
+    Derived from the sample code at         http://www.labouseur.com/courses/compilers/compilers/alan/<br>
+    Modified to minimize inline javascript code and modularized using requireJS
+</p>
+<pre>
 G ::== E
 E ::== D O E | D
 D ::== 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
 O ::== + | -
-    </pre>
-    <div>
-        <img style="float:right;" src="images/CompilerPhases.png" alt="Compiler Phases diagram" />
-    </div>    
-    <div>
-        <textarea id="taSourceCode" cols="32" rows="18"></textarea>
-        <br>
+</pre>
+<div>
+    <img style="float:right;" src="images/CompilerPhases.png" alt="Compiler Phases diagram" />
+</div>
+<div>
+    <!-- some style for label would be nice, but it isn't essential -->
+    <label for="taSourceCode">Source Code:</label><br/><textarea id="taSourceCode" cols="32" rows="18">1+2</textarea>
+    <br>
+    <!--  skip the onclick specification, do it in webPageInterface
         <input type="button" id="btnCompile" value="Compile" onclick="btnCompile_click();"/>
-        <br>
-        <textarea id="taOutput" cols="32" rows="18"></textarea>
+    -->
+        <input type="button" id="btnCompile" value="Compile" />
+    <br>
+    <!-- some style for label would be nice, but it isn't essential -->
+    <label for="taOutput">Parser Output:</label><br/><textarea id="taOutput" cols="32" rows="18"></textarea>
     </div>
     <!-- Footer -->
     <p>
@@ -35,10 +49,15 @@ O ::== + | -
         </a>
     </p>
     <!-- Client-side code down here, per the YSlow advice. 
-    // (http://developer.yahoo.com/performance/rules.html#js_bottom) -->
-    <script type="text/javascript" src="scripts/lib/utils.js"></script>
-    <script type="text/javascript" src="scripts/parse.js"></script>
-    <script type="text/javascript" src="scripts/lexer.js"></script>
-    <script type="text/javascript" src="scripts/webPageInterface.js"></script>
+    // (http://developer.yahoo.com/performance/rules.html#js_bottom)
+    //  dependencies will be loaded via require.js, rather than from HTML
+        <script type="text/javascript" src="scripts/lib/util.js"></script>
+        <script type="text/javascript" src="scripts/lexer.js"></script>
+        <script type="text/javascript" src="scripts/parse.js"></script>
+    // end of scripts loaded via requireJS
+    // webPageInterface loaded from HTML so it can see document fields
+    // there is probably a way for modules loaded via requireJS to see them,
+        <script type="text/javascript" src="scripts/webPageInterface.js"></script>
+    // but for expediency, I stopped trying to figure that out once it worked this way. -->
     </body>
 </html>
