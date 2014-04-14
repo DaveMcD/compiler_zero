@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="css/compiler.css" />
     <script type="text/javascript"
-            src="bower_components/requirejs/require.js"
-            data-main="scripts/main">
+            src="vendor/require.js"
+            data-main="scripts/main-req">
     </script>
 </head>
 <!--  skip the onload - html was not able to see it in a module loaded via requireJS
@@ -51,13 +51,13 @@ O ::== + | -
     <!-- Client-side code down here, per the YSlow advice. 
     // (http://developer.yahoo.com/performance/rules.html#js_bottom)
     //  dependencies will be loaded via require.js, rather than from HTML
-        <script type="text/javascript" src="scripts/lib/util.js"></script>
-        <script type="text/javascript" src="scripts/lexer.js"></script>
-        <script type="text/javascript" src="scripts/parse.js"></script>
-    // end of scripts loaded via requireJS
+        <script type="text/javascript" src="src/lib/util.js"></script>
+        <script type="text/javascript" src="src/lexer.js"></script>
+        <script type="text/javascript" src="src/parse.js"></script>
+    // end of src loaded via requireJS
     // webPageInterface loaded from HTML so it can see document fields
     // there is probably a way for modules loaded via requireJS to see them,
-        <script type="text/javascript" src="scripts/webPageInterface.js"></script>
+        <script type="text/javascript" src="src/webPageInterface.js"></script>
     // but for expediency, I stopped trying to figure that out once it worked this way. -->
     </body>
 </html>

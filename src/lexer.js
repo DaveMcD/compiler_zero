@@ -5,9 +5,9 @@
 define(['util'], function(util) {
     "use strict";
 
-    util.logC("enter lexer.js define(requiring util) SECOND");
+    util.logD("enter lexer.js define(requiring util) SECOND");
 
-    return function(sourceString) {
+    var lexerFunc = function(sourceString) {
     // var lexerFunc = function(sourceString) {
         // Grab the "raw" source code.
         var sourceCode;
@@ -32,6 +32,7 @@ define(['util'], function(util) {
         return tokenStream;
     };
 
-    // return lexerFunc;
+    util.logD("leave lexer.js define(requiring util)");
+    return lexerFunc;
 });
 

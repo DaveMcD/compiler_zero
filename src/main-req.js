@@ -1,6 +1,16 @@
 /**
- * @FILE main.js
+ * @FILE main-req.js
+ *
+ * Entry point invoked by require.js, from script tag on web page
+ * Typical examples for require.js will name this file main.js
+ *
+ * require.js will build dependency tree and ensure all requirements have been loaded before
+ * execution continues (a somewhat fuzzy definition, but the general idea).
  */
+var logD = console.log.bind(console);
+var logC = console.log.bind(console);       // to restore console logging
+//  logC = function(){};                    // to silence console logging
+
 
 require.config({
     paths: {
@@ -9,7 +19,9 @@ require.config({
         //    we only need to change that path here, rather than in source code
         //    for every module that depends on util
         // NOTE: a require/define dependency of ['lib/util'] will fail when we have it here
-        util: 'lib/util'
+            util: 'lib/util'
+        //    , 'jquery':     '../vendor/jquery-2.1.0'
+        //    , 'underscore': '../vendor/underscore-1.6.0'
         // so, if util.js is moved to path lib/secret, dependent modules can still
         // find it if we do this instead:
         // util: 'lib/secret/util'
@@ -18,15 +30,11 @@ require.config({
 
 require(["webPageInterface"], function (webPageInterface) {
     "use strict";
-    // also defined via util.logC
-    var logC = console.log.bind(console);
-    // logC("in main.js, we use define instead of require (and still run before anything in webPageInterface) ZEROTH");
-    logC("in main.js, we require webPageInterface (but still run before anything in webPageInterface) ZEROTH");
+    logD("in main-req.js, we require webPageInterface (but still run before anything in webPageInterface) ZEROTH");
 
-    // logC = function(){};   // to silence console logging
     // logC("a" + "b" + "c", "def", {a:1, b:2, c:3});
-    // if ('undefined' === typeof webPageInterface) { logC("wPI undefined"); }
-    // else { logC("wPI defined"); }
+    // if ('undefined' === typeof webPageInterface) { logD("wPI undefined"); }
+    // else { logD("wPI defined"); }
 
     // webPageInterface is still undefined, so we cannot call its init() function.
     // probably because webPageInterface does not return itself.
@@ -34,5 +42,6 @@ require(["webPageInterface"], function (webPageInterface) {
     // - perhaps an enclosing anonymous function?
     // In any case, things still seem to work OK without calling init,
     // - probably because the last thing webPageInterface does is call init()
+    // It is in the webPageInterface.init() file that we assign actions to buttons.
     //// webPageInterface.init();
 });

@@ -23,6 +23,7 @@
     <option gcl="false" />
     <option globalstrict="false" />
     <option immed="false" />
+    <option indent="4" />
     <option iterator="false" />
     <option jquery="false" />
     <option lastsemic="false" />
