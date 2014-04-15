@@ -27,11 +27,20 @@ requirejs.config({
     baseUrl: '/base/src',
 
     paths: {
-        'util':       'lib/util' ,
-    //    'jquery':     '../vendor/jquery-2.1.0' ,
-    //    'underscore': '../vendor/underscore-1.6.0' ,
-        'jasmine':    '../test/vendor/jasmine-2.0.0/jasmine' ,
+        'util': 'lib/util',
+        'jquery': '../vendor/jquery-2.1.0',
+        'jquery-ui': '../vendor/jquery-ui-1.10.4',
+        'ecotree': '../vendor/ECOTree_post15',
+        //    'underscore': '../vendor/underscore-1.6.0' ,
+        'jasmine': '../test/vendor/jasmine-2.0.0/jasmine',
         'SpecHelper': '../test/SpecHelper'
+    },
+
+    shim: {
+        'ecotree': {
+            deps: ['jquery', 'jquery-ui'],
+            exports: '$'
+        }
     },
 
     // underscore >= 1.6.0 has native support for requireJS

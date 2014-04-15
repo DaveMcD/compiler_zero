@@ -5,6 +5,7 @@ body
 	background-color: #909193;	/* The bottom color of background.jpg. */
 	background-image: url(images/background.jpg);
 	background-repeat: repeat-x;
+	background-size: cover;     /* if contain, we will retain gradient */
 	font-family: Helvetica, Verdana, Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: normal;

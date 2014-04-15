@@ -59,12 +59,14 @@ function(
             beforeEach(function () {
                 rotated = "AZ7nm";
             });
+
             it("should rotate letters by 13", function () {
                 logD("if using the karma test runner and JetBrains IDE");
                 logD("console output will be associated with the test case.");
                 logC('...Testing "NM7aZ"');
                 expect(util.rot13("NM7az")).toEqual(rotated);
             });
+
             it("and leave other characters unchanged", function () {
                 expect(util.rot13("123*()")).toEqual("123*()");
             });
